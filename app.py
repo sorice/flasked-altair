@@ -31,7 +31,7 @@ row_2 = Div(class_='w-60 center bb helvetica fw2',
                     id='scatter_1',
                     children=None),
                 Div(class_='fl w-50 pa4 tl',
-                    children='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium eveniet iusto, delectus qui veniam assumenda provident, repellendus consectetur enim quia explicabo quam, maiores, id doloribus reiciendis. Suscipit nobis obcaecati aliquam dolores similique eligendi earum totam exercitationem odit accusamus, nihil blanditiis vel deleniti facilis eos, optio repellendus quod provident ipsum libero sapiente explicabo consectetur iusto sunt. Dolorem veniam mollitia amet, aliquid libero vero. Ad doloribus quae tempore quis nulla eius, ea eum sunt provident aspernatur dignissimos esse, reprehenderit, tenetur laudantium placeat.')
+                    children='Cambiado.')
                 ])
 
 row_3 = Div(class_='w-60 center bb helvetica fw2',
