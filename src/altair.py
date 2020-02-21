@@ -7,7 +7,8 @@ def make_static_chart():
     return alt.Chart(data=data.cars()).mark_circle(size=60).encode(
         x='Horsepower:Q',
         y='Miles_per_Gallon:Q',
-        color='Origin:N'
+        color='Origin:N',
+        tooltip='Origin:N',
     ).interactive()
 
 def make_interactive_chart():
