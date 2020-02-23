@@ -1,6 +1,5 @@
-name: flasked_altair
+name: flasked_dashb
 channels:
-- conda-forge
 - defaults
 dependencies:
 - altair=2.3.0=py36_1001
@@ -36,5 +35,4 @@ dependencies:
 - zlib=1.2.11=0
 - pip:
   - vega-datasets==0.7.0
-prefix: /Users/dkhosla/miniconda3/envs/flasked_altair
 
