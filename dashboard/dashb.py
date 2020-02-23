@@ -1,7 +1,10 @@
-from flask import Flask, render_template, url_for, redirect, jsonify
+from flask import Flask, render_template, url_for, redirect, jsonify,\
+                Blueprint
 import json
-from src import Div
-from src import make_static_chart, make_interactive_chart
+from dashboard.plot import Div
+from dashboard.plot import make_static_chart, make_interactive_chart
+
+main = Blueprint('main', __name__)
 
 # ----- Generate Altair Charts -----
 chart_1 = make_static_chart()
@@ -44,10 +47,7 @@ row_3 = Div(class_='w-60 center bb helvetica fw2',
 
 payloads_ = [page_title, row_1, row_2, row_3]
 
-# ------ Build Flask App ------
-app = Flask(__name__)
-
-@app.route('/')
+@main.route('/')
 def index():
     return render_template('index.html', payloads=payloads_, charts=charts_)
 
