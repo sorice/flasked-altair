@@ -1,7 +1,7 @@
 import altair as alt
 from vega_datasets import data
 
-def make_static_chart():
+def make_static_chart1():
     '''
     '''
     return alt.Chart(data=data.cars()).mark_circle(size=60).encode(
@@ -11,42 +11,43 @@ def make_static_chart():
         tooltip='Origin:N',
     ).interactive()
 
+def make_static_chart():
+    '''
+    '''
+    return alt.Chart(data=data.iris()).mark_circle(size=60).encode(
+        x='petalLength:Q',
+        y='petalWidth:Q',
+        color='species:N',
+        tooltip='sepalWidth:Q',
+    ).interactive()
+
 def make_interactive_chart():
     '''
     '''
-    pts = alt.selection(type="single", encodings=['x'])
+    pts = alt.selection_interval(encodings=['x','y'])
 
-    rect = alt.Chart(data.iris()).mark_rect().encode(
-        alt.X('petalLength:Q', bin=True),
-        alt.Y('petalWidth:Q', bin=True),
-        alt.Color('species',
-            scale=alt.Scale(scheme='greenblue'),
-            legend=alt.Legend(title='Total Sample')
-        )
-    )
-
-    circ = rect.mark_point().encode(
-        alt.ColorValue('grey'),
-        alt.Size('count()',
-            legend=alt.Legend(title='Sample in Selection')
-        )
-    ).transform_filter(
-        pts
-    )
-
-    line = alt.Chart(data.stocks()).mark_line().encode(
-        x='date:T',
-        y='price:Q',
-        color=alt.condition(pts, alt.ColorValue("steelblue"), alt.ColorValue("grey"))
+    rect = alt.Chart(data.cars()).mark_point().encode(
+        x='Miles_per_Gallon:Q',
+        y='Horsepower:Q',
+        color=alt.condition(pts, 'Origin', alt.value('lightgray'))
     ).properties(
-        selection=pts,
-        width=550,
-        height=200
+        selection = pts
     )
+
+    # scale=alt.Scale(scheme='greenblue'),
+    #         legend=alt.Legend(title='Total Sample')
+    #     )
+    # circ = rect.mark_point().encode(
+    #     alt.ColorValue('grey'),
+    #     alt.Size('count()',
+    #         legend=alt.Legend(title='Sample in Selection')
+    #     )
+    # ).transform_filter(
+    #     pts
+    # )
 
     return alt.vconcat(
-        rect + circ,
-        line
+        rect | rect.encode(x='Acceleration')
     ).resolve_legend(
         color="independent",
         size="independent"

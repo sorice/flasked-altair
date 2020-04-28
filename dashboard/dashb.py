@@ -26,7 +26,8 @@ page_title = Div(id='page_title',
                  children='Flask + Altair')
 
 row_1 = Div(class_='pa4 w-60 center bb helvetica fw2',
-            children='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas recusandae doloremque itaque fugit cupiditate asperiores, atque, voluptates eum enim culpa eos! Repellat, ab, ipsam molestiae ut molestias unde sunt deserunt distinctio non modi et nisi quas in rem, minus odio possimus expedita quam officia dolores. Nam sint enim neque modi et a nisi eligendi recusandae dolorem. Neque cum numquam, expedita nostrum officiis, dicta quo quidem rerum molestias voluptates aspernatur ut quos amet modi praesentium. Tempora illo, nihil mollitia expedita fugit quos ut incidunt placeat dolores perferendis ullam, labore aspernatur dicta sunt a minima adipisci fuga, quaerat quasi delectus harum facere.')
+            children="""Paragraph example, a lot of text for explanations
+            accompanying the graphs to help to understand the context.""")
 
 row_2 = Div(class_='w-60 center bb helvetica fw2',
             children=[
@@ -34,13 +35,14 @@ row_2 = Div(class_='w-60 center bb helvetica fw2',
                     id='scatter_1',
                     children=None),
                 Div(class_='fl w-50 pa4 tl',
-                    children='Cambiado.')
+                    children="""Text accompanying graph 1, just to.
+                                show composed DIV""")
                 ])
 
 row_3 = Div(class_='w-60 center bb helvetica fw2',
             children=[
                 Div(class_='tc w-100 pa4',
-                    children='Click on a bar on the histogram to interact with the visualization.'),
+                    children='Select some points, and drag the selection.'),
                 Div(id='interactive_1',
                     class_='w-100',
                     children=None)])
