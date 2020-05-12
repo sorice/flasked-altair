@@ -45,7 +45,10 @@ row_3 = Div(class_='w-60 center bb helvetica fw2',
                     children='Select some points, and drag the selection.'),
                 Div(id='interactive_1',
                     class_='w-100',
-                    children=None)])
+                    children=None),
+                Div(id='button1',
+                    class_='btn btn-lg btn-success',
+                    children='Zoom')])
 
 payloads_ = [page_title, row_1, row_2, row_3]
 
