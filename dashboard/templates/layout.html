@@ -7,15 +7,30 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='tachyons.min.css')}}">
   <!-- LOOK: whatch here how to reference an static file -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-theme.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
   <script src="{{ url_for('static', filename='vega-min.js') }}"></script>
   <script src="{{ url_for('static', filename='vega-lite-min.js') }}"></script>
   <script src="{{ url_for('static', filename='vega-embed-min.js') }}"></script>
+  <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
 </head>
 <body>
     {% block javascript %}
       <script src="{{ url_for('static', filename='vega-min.js') }}"></script>
       <script src="{{ url_for('static', filename='vega-lite-min.js') }}"></script>
       <script src="{{ url_for('static', filename='vega-embed-min.js') }}"></script>
+      <script>
+        function getChartDat(message){
+          var messageElement = document.getElementById("tchart1");
+          messageElement.textContent = message;
+          messageElement.createElement("li");
+          }
+      </script>
+      <script>
+        document.body.addEventListener("click", function(){
+          getChartDat("click works");
+        }
+      </script>
     {% endblock %}
   <div class="flex flex-column">
     {% block content %}{% endblock %}

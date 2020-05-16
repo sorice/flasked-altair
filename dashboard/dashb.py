@@ -41,14 +41,18 @@ row_2 = Div(class_='w-60 center bb helvetica fw2',
 
 row_3 = Div(class_='w-60 center bb helvetica fw2',
             children=[
-                Div(class_='tc w-100 pa4',
+                Div(id='tchart1',
+                    class_='tc w-100 pa4',
                     children='Select some points, and drag the selection.'),
-                Div(id='interactive_1',
-                    class_='w-100',
-                    children=None),
-                Div(id='button1',
-                    class_='btn btn-lg btn-success',
-                    children='Zoom')])
+                Div(id='column',
+                    class_= 'tc w-100 pa4',
+                    children = [
+                        Div(id='interactive_1',
+                            class_='tr',
+                            children=None),
+                        Div(id='button1',
+                            class_='btn btn-lg btn-success',
+                            children='Zoom')])])
 
 payloads_ = [page_title, row_1, row_2, row_3]
 
