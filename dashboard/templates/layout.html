@@ -23,13 +23,12 @@
         function getChartDat(message){
           var messageElement = document.getElementById("tchart1");
           messageElement.textContent = message;
-          messageElement.createElement("li");
           }
       </script>
       <script>
         document.body.addEventListener("click", function(){
           getChartDat("click works");
-        }
+        });
       </script>
     {% endblock %}
   <div class="flex flex-column">
