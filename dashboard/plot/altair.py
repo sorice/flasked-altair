@@ -1,6 +1,10 @@
 import altair as alt
 from vega_datasets import data
 
+dataset = {
+    'cars': data.cars()
+}
+
 def make_static_chart1():
     '''
     '''
@@ -21,12 +25,12 @@ def make_static_chart():
         tooltip='sepalWidth:Q',
     ).interactive()
 
-def make_interactive_chart():
+def make_interactive_chart(dname='cars'):
     '''
     '''
     pts = alt.selection_interval(encodings=['x','y'])
 
-    rect = alt.Chart(data.cars()).mark_point().encode(
+    rect = alt.Chart(dataset[dname]).mark_point().encode(
         x='Miles_per_Gallon:Q',
         y='Horsepower:Q',
         color=alt.condition(pts, 'Origin', alt.value('lightgray'))

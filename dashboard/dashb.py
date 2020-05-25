@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, redirect, jsonify,\
-                Blueprint
+                Blueprint, make_response
 import json
 from dashboard.plot import Div
 from dashboard.plot import make_static_chart, make_interactive_chart
@@ -59,6 +59,28 @@ payloads_ = [page_title, row_1, row_2, row_3]
 @main.route('/')
 def index():
     return render_template('index.html', payloads=payloads_, charts=charts_)
+
+#https://vega.github.io/vega-lite/tutorials/getting_started.html
+@main.route('/vlspec', methods = ['GET'])
+def serve_vlspec():
+    value = {
+        "data": {
+            "values": [
+            {"a": "C", "b": 2}, {"a": "C", "b": 7}, {"a": "C", "b": 4},
+            {"a": "D", "b": 1}, {"a": "D", "b": 2}, {"a": "D", "b": 6},
+            {"a": "E", "b": 8}, {"a": "E", "b": 4}, {"a": "E", "b": 7}
+            ]
+        },
+        "mark": "bar",
+        "encoding": {
+            "y": {"field": "a", "type": "nominal"},
+            "x": {
+            "aggregate": "average", "field": "b", "type": "quantitative",
+            "axis": {"title": "Mean of b"}
+            }
+        }
+    }
+    return make_response(jsonify(value),200)
 
 if __name__ == '__main__':
     app.run(debug=True)

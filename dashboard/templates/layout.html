@@ -20,14 +20,33 @@
       <script src="{{ url_for('static', filename='vega-lite-min.js') }}"></script>
       <script src="{{ url_for('static', filename='vega-embed-min.js') }}"></script>
       <script>
+      //This is for research, to see the inside of element div
+      function getChartElement(){
+       var chartElement = document.getElementById("interactive_1");
+       console.log(chartElement);
+      }
+      </script>
+      <script>
         function getChartDat(message){
           var messageElement = document.getElementById("tchart1");
           messageElement.textContent = message;
           }
       </script>
       <script>
+        function httpGet(theUrl){
+              var xmlHttp = new XMLHttpRequest();
+              xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+              xmlHttp.send( null );
+              var chartElement = document.getElementById("interactive_1");
+              console.log(chartElement)
+              chartElement.textContent = xmlHttp.responseText;
+              //return
+          }
+      </script>
+      <script>
         document.body.addEventListener("click", function(){
-          getChartDat("click works");
+          httpGet("http://127.0.0.1:5000/vlspec");
+          //getChartElement();
         });
       </script>
     {% endblock %}
